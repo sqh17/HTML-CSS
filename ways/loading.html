@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>loading</title>
+  <style>
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 方法1    ----- start ------- */
+    .loading{
+      width: 50px; /*先将loading区域变成正方形*/
+      height: 50px;
+      display: inline-block; /*将loading区域变成行内元素，防止旋转的时候，100%宽度都在旋转*/
+      border: 3px solid #f3f3f3; /*设置四周边框大小，并将颜色设置为浅白色*/
+      border-top: 3px solid red; /*将上边框颜色设置为红色高亮，以便旋转的时候能够看到旋转的效果*/
+      border-radius: 50%; /*将边框和内容区域都变成圆形*/
+      animation: loading-360 0.8s infinite linear; /*给圆环添加旋转360度的动画，并且是无限次*/
+    }
+    @keyframes loading-360 {
+      0% {
+        transform: rotate(0deg); /*动画起始的时候旋转了0度*/
+      }
+      100% {
+        transform: rotate(360deg); /*动画结束的时候旋转了360度*/
+      }
+    }
+    /* 方法1    ----- end ------- */
+
+    /* 方法2   ------ start ------ */
+    .loading-svg {
+      width: 60px; /*设置svg显示区域大小*/
+      height: 60px;
+      animation: loading-rotate 1.5s infinite ease-in-out; /*给svg也加上一个旋转动画*/
+    }
+    .path {
+      stroke: #409eff; /*给画笔设置一个颜色*/
+      stroke-width: 2; /*设置线条的宽度*/
+      animation: loading-dash 1.5s ease-in-out infinite;
+    }
+    @keyframes loading-dash {
+      0% {
+        stroke-dasharray: 1, 126; /*实线部分1，虚线部分126*/
+        stroke-dashoffset: 0; /*前面1/126显示实线，后面125显示空白*/
+      }
+
+      50% {
+        stroke-dasharray: 95, 126; /*实线部分95，虚线部分126*/
+        stroke-dashoffset: -31px /*顺时针偏移31/126，即前31/126显示空白，后面3/4显示线条*/
+      }
+
+      to {
+        stroke-dasharray: 6, 120; /*实线部分6，虚线部分120*/
+        stroke-dashoffset: -120px; /*最后顺时针偏移120/126，即前120/126显示空白，后面6点显示线条部分*/
+      }
+    }
+    @keyframes loading-rotate {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+    /* 方法2   ------ end ------ */
+  </style>
+</head>
+<body>
+  <!-- 方法1 -->
+  <div class="loading"></div>
+  <!-- 方法2 -->
+  <svg viewBox="0 0 50 50" class="loading-svg">
+    <circle cx="25" cy="25" r="20" fill="none" class="path"></circle>
+  </svg>
+</body>
+</html>
