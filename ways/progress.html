@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>progress</title>
+  <style>
+    body,
+    ul {
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+
+    .pro_bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #DDD;
+      overflow: hidden;
+    }
+
+    .pro_bar .bar_cess {
+      position: absolute;
+      left: 0;
+      height: 100%;
+      background-color: #0089f2;
+    }
+
+    ul li {
+      height: 1000px;
+      background: pink;
+      list-style: none;
+    }
+
+    ul li:nth-child(odd) {
+      background: greenyellow;
+    }
+
+    .scroll_fixed {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to right top, #0089f2 50%, transparent 50%) no-repeat;
+      /* 前一个100%+5px是控制三角形宽度比满宽度大5px确保不会滑到底部还不满，后一个控制三角形的高度，这个-100vh就是确保“视角”。具体的你可以把下面after里面的background注释掉自己感觉下 */
+      background-size: calc(100% + 5px) calc(100% - 100vh + 17px);
+      z-index: 1;
+      pointer-events: none;
+      mix-blend-mode: darken;
+    }
+
+    .scroll_fixed::after {
+      content: '';
+      position: fixed;
+      top: 2px;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: #fff;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- css -->
+  <div class="scroll_fixed"></div>
+  <!-- css+js -->
+  <!-- <div class="pro_bar">
+    <div class="bar_cess"></div>
+  </div> -->
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+  <script>
+    // let scrollHeight = document.documentElement.scrollHeight; // 页面所有内容的高度
+    // let clientHeight = document.documentElement.clientHeight; // 可视的高度
+    // console.log(scrollHeight,clientHeight)
+    // let bar = document.querySelector('.bar_cess');
+    // document.addEventListener('scroll', function (e) {
+    //   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //   const sizeHeight = (scrollTop / (scrollHeight - clientHeight)).toFixed(2) * 100;
+    //   bar.style.width = sizeHeight + "%";
+    // })
+  </script>
+</body>
+
+</html>
