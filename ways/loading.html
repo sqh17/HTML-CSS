@@ -12,6 +12,7 @@
       min-height: 100vh;
       margin: 0;
       padding: 0;
+      flex-wrap: wrap;
     }
 
     /* 方法1    ----- start ------- */
@@ -67,6 +68,155 @@
       }
     }
     /* 方法2   ------ end ------ */
+
+    /* 方法3   ------ start ----- */
+    /* 根据shadow的宽度来实现loading */
+    .loader-3 {
+      position: relative;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      color: inherit;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+    .loader-3:before,
+    .loader-3:after {
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: purple;
+      left: 50%;
+      right: 0;
+      top: 0;
+      bottom: 50%;
+      box-shadow: -50px 0 0 purple;
+      -webkit-animation: loader-3 1s linear infinite;
+      animation: loader-3 1s linear infinite;
+    }
+    .loader-3:after {
+      top: 50%;
+      bottom: 0;
+      -webkit-animation-delay: 0.25s;
+      animation-delay: 0.25s;
+    }
+    @keyframes loader-3 {
+      0%,
+      100% {
+        box-shadow: -50px 0 0 transparent;
+        background-color: purple;
+      }
+      50% {
+        box-shadow: -50px 0 0 purple;
+        background-color: transparent;
+      }
+    }
+    /* 方法3  ----- end ----- */
+
+    /* 方法4  ----- start ----- */
+    .box{
+      height: 100px;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader-4 {
+      border-radius: 50%;
+      box-shadow: 0 1em 0 -0.2em pink;
+      position: relative;
+      animation: loader-4 0.8s ease-in-out alternate infinite;
+      animation-delay: 0.32s;
+      top: -1em;
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      color: inherit;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+    .loader-4:after,
+    .loader-4:before {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      box-shadow: inherit;
+      -webkit-animation: inherit;
+      animation: inherit;
+    }
+    .loader-4:before {
+      left: -1em;
+      -webkit-animation-delay: 0.48s;
+      animation-delay: 0.48s;
+    }
+    .loader-4:after {
+      right: -1em;
+      -webkit-animation-delay: 0.16s;
+      animation-delay: 0.16s;
+    }
+    @keyframes loader-4 {
+      0% {
+        box-shadow: 0 2em 0 -0.2em pink;
+      }
+      100% {
+        box-shadow: 0 1em 0 -0.2em pink;
+      }
+    }
+    /* 方法4  ----- end ------ */
+
+    /* 方法5  ---- start ---- */
+    .box5{
+      height: 100px;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader-5 {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      color: inherit;
+      vertical-align: middle;
+      pointer-events: none;
+    }
+    .loader-5:before,
+    .loader-5:after {
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      border: 0.1em solid transparent;
+      border-bottom-color: greenyellow;
+      top: 0;
+      left: 0;
+      animation: 2s loader-5 linear infinite;
+    }
+    .loader-5:before {
+      width: 50px;
+      height: 50px;
+    }
+    .loader-5:after {
+      width: 30px;
+      height: 30px;
+      top: 10px;
+      left: 10px;
+      animation-direction: reverse;
+    }
+    @keyframes loader-5 {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    /* 方法5  ---- end  ---- */
   </style>
 </head>
 <body>
@@ -76,5 +226,15 @@
   <svg viewBox="0 0 50 50" class="loading-svg">
     <circle cx="25" cy="25" r="20" fill="none" class="path"></circle>
   </svg>
+  <!-- 方法3 -->
+  <div class="loader-3"></div>
+  <!-- 方法4 -->
+  <div class="box">
+    <div class="loader-4"></div>
+  </div>
+  <!-- 方法5 -->
+  <div class="box5">
+    <div class="loader-5"></div>
+  </div>
 </body>
 </html>
