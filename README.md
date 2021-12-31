@@ -6,3 +6,4 @@
 * [loading三种方案](https://github.com/sqh17/CSS/blob/master/ways/loading.html)
 * [顶部进度条](https://github.com/sqh17/CSS/blob/master/ways/progress.html)
 * [翻页时钟](https://github.com/sqh17/CSS/blob/master/ways/flip_clock.html)
+* [骨架屏的动画效果](https://github.com/sqh17/CSS/blob/master/ways/skeleton.html)
