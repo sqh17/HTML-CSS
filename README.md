@@ -14,3 +14,4 @@
 ### HTML
 
 * [实现登录拼图验证](./ways/imageCropVerification.html)
+* [实现四方格跟随鼠标移动](./ways/lineMoving.html)
